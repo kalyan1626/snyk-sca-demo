@@ -1,0 +1,10 @@
+{
+  "name": "sca-demo",
+  "version": "1.0.0",
+  "description": "Snyk SCA Scan Demo",
+  "dependencies": {
+    "lodash": "4.17.15",
+    "minimist": "0.0.8",
+    "jquery": "3.4.0"
+  }
+}
