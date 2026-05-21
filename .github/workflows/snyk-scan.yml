@@ -24,19 +24,13 @@ jobs:
         run: npm install
 
       - name: Install Snyk
-        run: npm install -g snyk snyk-to-html
+        run: npm install -g snyk
 
       - name: Authenticate Snyk
         run: snyk auth ${{ secrets.SNYK_TOKEN }}
 
       - name: Run Snyk Test
-        run: snyk test --json-file-output=snyk-report.json || true
+        run: snyk test || true
 
-      - name: Generate HTML Report
-        run: snyk-to-html -i snyk-report.json -o snyk-report.html
-
-      - name: Upload HTML Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: snyk-html-report
-          path: snyk-report.html
+      - name: Upload Results to Snyk Dashboard
+        run: snyk monitor
